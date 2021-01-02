@@ -197,16 +197,7 @@ function response(room, msg, sender, isGroupChat, replier, ImageDB) {
     }
 
     if((msg == "/고코위") && (room == "운영위방")) {
-        replier.reply(
-        "@코양이 위원장(호출:코양" + 
-        "@양사 " + 
-        "@러리 " + 
-        "@깃허브를 좋아하는 고양이 " + 
-        "@Cpprhtn (호출:Cpp)͡ " + 
-        "@헬렐렐레(룰루) " + 
-        "@Lu175 /Mixed /0 " + 
-        "@뽀로로 " + 
-        "@차원을 꿰뚫고 도약하는 녹색치킨");
+        replier.reply("코양 양사 러리 깃고 고수 룰루 암고 Lu175 뽀로로 녹치");
         replier.reply("어셈블!!!!!!!");
     }
 }
