@@ -1,35 +1,31 @@
 /*
 Copyright 2020. Cat Coding  Committee
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
-
 The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-
-
 */
 
 function roomBangjang(room) {
     if(room == "운영위방") {
-        return "테스트중입니다" + "\n신 고 #신 고 /신 고";
+        return "테스트중입니다";
     }
     if(room == "C방") {
-        return "Cpp, 러리, 룰루, 뽀로로, 양사, 코양," + "\n신고 #신고 /신고";
-    }
-    if(room == "웹방") {
-        return "Cpp, 녹치, 러리, 양사, 코양" + "\n신고 #신고 /신고";
-    }
-    if(room == "견적방") {
-        return "Cpp, 깃고, 러리, 양사, 코양" + "\n신고 #신고 /신고";
-    }
-    if(room == "파이썬방") {
-        return "Cpp, 깃고, 러리, 룰루, 양사, 코양" + "\n신고 #신고 /신고";
+        return "Cpp, 러리, 룰루, 뽀로로, 양사, 코양" + "\n신고 #신고 /신고";
     }
     if(room === "자바방") {
-        return "Cpp, 러리, 양사, 코양" + "\n신고 #신고 /신고";
+        return "러리, Cpp, 양사, 코양" + "\n신고 #신고 /신고";
         }
+    if(room == "파이썬방") {
+        return "코양, Cpp, 깃고, 러리, 룰루, 양사" + "\n신고 #신고 /신고";
+    }
+    if(room == "웹방") {
+        return "코양, Cpp, 러리, 뽀로로, 양사, 녹치" + "\n신고 #신고 /신고";
+    }
+    if(room == "견적방") {
+        return "양사, Cpp, 깃고, 러리, 코양" + "\n신고 #신고 /신고";
+    }
     if(room == "작곡방") {
-        return "양사, KI-D, 한겨울의 태양, Mute Jack" + "\n신고 #신고 /신고";
+        return "양사, Mute Jack, KI-D, 블루링, 조담" + "\n신고 #신고 /신고";
     }
 }
     
@@ -37,8 +33,10 @@ function roomBangjang(room) {
     
 function response(room, msg, sender, isGroupChat, replier, ImageDB) {
 
+    var len = msg.length
+
     //욕, 광고 감지 코드
-    var advertisement = ["www1.president.go.kr", "http://bit.ly/2S28qnj", "소다방", "합법", "제태크", "재테크", "선착순", "성인방송", "성인 방송", "섹시", "수익", "야동", "t.me","band.", "(광고)", "가리기", "갱뱅", "NO모", "배팅", "결혼 등급", "투자금", "급전", "무료수신거부", "홍보대행", "고객만족", "시노스", "베팅", "파워볼", "미니게임", "카지노"];
+    var advertisement = ["www1.president.go.kr", "http://bit.ly/2S28qnj", "소다방", "합법", "제태크", "재테크", "선착순", "성인방송", "성인 방송", "섹시", "수익", "야동", "t.me","band.", "광고", "가리기", "갱뱅", "NO모", "배팅", "결혼 등급", "투자금", "급전", "무료수신거부", "홍보대행", "고객만족", "시노스", "베팅", "파워볼", "미니게임", "카지노", "주식", "원금보장", "원금 보장", "홍보", "twitch", "사례"];
     
     var cuss = [
     "10새리", "10세리", "10쉐이", "10쉑", "10스", "10쌔", "10쌔기", "10쎄", "10창", "10탱", 
@@ -76,7 +74,7 @@ function response(room, msg, sender, isGroupChat, replier, ImageDB) {
     "엿같", "옘병", "옘빙", "왜년", "왜놈", "욤병", "육갑", "은년", "을년", "응디", "이기야", "이년", 
     "이새키", "이스끼", 
     "ㅈㄲ", "ㅈㄴ", "ㅈㄹ", "자슥", "잡것", "잡넘", "잡년", "잡놈", "저년", "접년", "젖밥", "조까", 
-    "조까치", "조낸", "조또", "조랭", "조빠", "조쟁이", "조지냐", "조진다", "조질래", "조찐", "존나", "존니", "존만", 
+    "조까치", "조낸", "조또", "조빠", "조쟁이", "조지냐", "조진다", "조질래", "조찐", "존나", "존니", "존만", 
     "좀물", "좁년", "좁밥", "좃까", "좃또", "좃만", "좃밥", "좃이", "좃찐", "좆", "좇같", "좇이", 
     "주글", "주데이", "주뎅", "주둥아리", "주둥이", "죽고잡", "죽통", "쥐랄", "쥐롤", "쥬디", 
     "지랄", "지럴", "지롤", "지미랄", "쪼다", "쫍빱", "찌랄", 
@@ -102,6 +100,8 @@ function response(room, msg, sender, isGroupChat, replier, ImageDB) {
         }
     }
 
+    var day = new Date();
+
 
     // 도움말
     if(msg == "/help") {
@@ -126,10 +126,10 @@ function response(room, msg, sender, isGroupChat, replier, ImageDB) {
     // 기본 명령어 모음
     if(msg == "/채팅방 목록") {
         replier.reply(
-        "클릭시 방 목록 보기" + "\n\n" + 
+        "클릭시 방 목록 보기​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​" + "\n\n" + 
         "저희는 여러 개의 방과 같이 활동하는 개발자 연합입니다. 다른 종류의 언어를 질문하고 싶으시면 밑의 링크를 타시길 바랍니다." + "\n\n" + 
         "네이버카페(공통) - https://cafe.naver.com/codecat" + "\n\n" + 
-        "디스코드(공통) - https://discord.gg/xmyez8Jk" + "\n\n" + 
+        "디스코드(공통) - https://discord.gg/cZ5r5PRTX5" + "\n\n" + 
         "C언어, C#, C++, 게임 엔진 - https://open.kakao.com/o/ghFjlzr" + "\n\n" + 
         "자바, 안드로이드 - https://open.kakao.com/o/goAvtbOb" + "\n\n" + 
         "파이썬(ML), R - https://open.kakao.com/o/gWvnqvF" + "\n\n" + 
@@ -166,7 +166,7 @@ function response(room, msg, sender, isGroupChat, replier, ImageDB) {
         "루 - https://github.com/Lu175" + "\n" + 
         "뽀 로 로 - https://github.com/paxbun" + "\n" + 
         "녹 색 치 킨 - https://github.com/IceJack");
-        replier.reply("팔로우 한 번씩만 눌러주세요ㅠㅠ")
+        replier.reply("다들 한번씩 놀러오세요~");
     }
 
 
@@ -188,46 +188,44 @@ function response(room, msg, sender, isGroupChat, replier, ImageDB) {
     }
     
     if((msg == "/가위바위보") && (room == "운영위방")) {
-        replier.reply("가위바위보 게임을 시작합니다.\n가위, 바위, 보 중 하나를 내주세요.");
-        player = sender;
-    }
+        replier.reply("가위바위보 게임을 시작합니다.\n가위, 바위, 보 중 하나를 내주세요.");
+        player = sender;
+    }
     if((player == sender) && (msg == "가위" || msg == "바위" || msg == "보")) {
-        var result = Math.floor(Math.random() * 3);
-        if(result == 0) {
-            if(msg == "가위") {
-                replier.reply("저는 바위를 냈습니다.\n개한테 지냐ㅋ");
-            }
+        var result = Math.floor(Math.random() * 3);
+        if(result == 0) {
+            if(msg == "가위") {
+                replier.reply("저는 바위를 냈습니다.\n개한테 지냐ㅋ");
+            }
             else if(msg == "바위") {
-                replier.reply("저는 보를 냈습니다.\n개한테 지냐ㅋ");
-            }
+                replier.reply("저는 보를 냈습니다.\n개한테 지냐ㅋ");
+            }
             else if(msg == "보") {
-                replier.reply("저는 가위를 냈습니다.\n개한테 지냐ㅋ");
-            }
-        }
+                replier.reply("저는 가위를 냈습니다.\n개한테 지냐ㅋ");
+            }
+        }
         else if(result == 1) {
-            replier.reply("저는 " + msg + "를 냈습니다.\n비겼습니다.");
-        }
+            replier.reply("저는 " + msg + "를 냈습니다.\n비겼습니다.");
+        }
         else if(result == 2) {
-            if(msg == "가위") {
-                replier.reply("저는 보를 냈습니다.\n당신이 이겼습니다.");
-            }
+            if(msg == "가위") {
+                replier.reply("저는 보를 냈습니다.\n당신이 이겼습니다.");
+            }
             else if(msg == "바위") {
-                replier.reply("저는 가위를 냈습니다.\n당신이 이겼습니다.");
-            }
+                replier.reply("저는 가위를 냈습니다.\n당신이 이겼습니다.");
+            }
             else if(msg == "보") {
-                replier.reply("저는 바위를 냈습니다.\n당신이 이겼습니다.");
-            }
-        }
-        player = null;
-    }
+                replier.reply("저는 바위를 냈습니다.\n당신이 이겼습니다.");
+            }
+        }
+        player = null;
+    }
 
     if((msg == "/날짜") && (room == "운영위방")) {
-        var day = new Date();
         replier.reply("오늘은 " + (day.getMonth() + 1) + "월 " + day.getDate() + "일 입니다.");
     }
 
     if((msg == "/시간") && (room == "운영위방")) {
-        var day = new Date();
         replier.reply("지금은 " + day.getHours() + "시 " + day.getMinutes() + "분 " + day.getSeconds() + "초입니다.");
     }
 
@@ -236,7 +234,32 @@ function response(room, msg, sender, isGroupChat, replier, ImageDB) {
     }
 
     if((msg == "/고코위") && (room == "운영위방")) {
-        replier.reply("코양 양사 러리 깃고 고수 룰루 암고 Lu175 뽀로로 녹치");
+        replier.reply("코양 양사 러리 깃고 Cpp 룰루 암고 Lu175 뽀로로 녹치");
         replier.reply("어셈블!!!!!!!");
+    }
+
+    if((msg == "/C") && (room == "운영위방")) {
+        replier.reply("Cpp 러리 룰루 뽀로로 양사 코양");
+        replier.reply("C 어셈블!!!!!!!");
+    }
+
+    if((msg == "/자바") && (room == "운영위방")) {
+        replier.reply("러리 Cpp 양사 코양");
+        replier.reply("자바 어셈블!!!!!!!");
+    }
+
+    if((msg == "/파이썬") && (room == "운영위방")) {
+        replier.reply("코양 Cpp 깃고 러리 룰루 양사");
+        replier.reply("파이썬 어셈블!!!!!!!");
+    }
+
+    if((msg == "/웹") && (room == "운영위방")) {
+        replier.reply("코양 Cpp 러리 뽀로로 양사 녹치");
+        replier.reply("웹 어셈블!!!!!!!");
+    }
+
+    if((msg == "/견적") && (room == "운영위방")) {
+        replier.reply("양사 Cpp 깃고 러리 코양");
+        replier.reply("견적 어셈블!!!!!!!");
     }
 }
