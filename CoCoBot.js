@@ -91,20 +91,20 @@ function response(room, msg, sender, isGroupChat, replier, ImageDB) {
             "로그방", 
             "감지 위치 : " + room + "\n" + 
             "닉네임 : " + sender + "\n" + 
-            "키워드 : " + advertisement[i]);
+            "키워드 : " + advertisement[i] + "\n" + 
+            roomBangjang(room));
         }
     }
    
     for(var i = 0; i < cuss.length; i++) {
         if(msg.indexOf(cuss[i]) != -1) {
-            replier.reply("문제의 키워드를 발견했습니다(" + cuss[i] + ")\n" + "\n닉네임 : " + sender);
-            replier.reply(roomBangjang(room));
             replier.reply("로그방", room + " : 욕설 감지");
             replier.reply(
             "로그방", 
             "감지 위치 : " + room + "\n" + 
             "닉네임 : " + sender + "\n" + 
-            "키워드 : " + cuss[i]);
+            "키워드 : " + cuss[i] + "\n" + 
+            roomBangjang(room));
         }
     }
 
