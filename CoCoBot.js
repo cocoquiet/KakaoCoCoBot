@@ -86,9 +86,12 @@ function response(room, msg, sender, isGroupChat, replier, ImageDB) {
 
     for(var i = 0; i < advertisement.length; i++) {
         if(msg.indexOf(advertisement[i]) != -1 && len > 60) {
-            replier.reply("문제의 키워드를 발견했습니다\n닉네임 : " + sender);
-            replier.reply(roomBangjang(room));
-            break;
+            replier.reply("로그방", "광고 감지");
+            replier.reply(
+            "로그방", 
+            "감지 위치 : " + room + "\n" + 
+            "닉네임 : " + sender + "\n" + 
+            "키워드 : " + advertisement[i]);
         }
     }
    
@@ -96,7 +99,12 @@ function response(room, msg, sender, isGroupChat, replier, ImageDB) {
         if(msg.indexOf(cuss[i]) != -1) {
             replier.reply("문제의 키워드를 발견했습니다(" + cuss[i] + ")\n" + "\n닉네임 : " + sender);
             replier.reply(roomBangjang(room));
-            break;
+            replier.reply("로그방", room + " : 욕설 감지");
+            replier.reply(
+            "로그방", 
+            "감지 위치 : " + room + "\n" + 
+            "닉네임 : " + sender + "\n" + 
+            "키워드 : " + cuss[i]);
         }
     }
 
@@ -126,7 +134,7 @@ function response(room, msg, sender, isGroupChat, replier, ImageDB) {
     // 기본 명령어 모음
     if(msg == "/채팅방 목록") {
         replier.reply(
-        "클릭시 방 목록 보기​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​" + "\n\n" + 
+        "클릭시 방 목록 보기                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    " + "\n\n" + 
         "저희는 여러 개의 방과 같이 활동하는 개발자 연합입니다. 다른 종류의 언어를 질문하고 싶으시면 밑의 링크를 타시길 바랍니다." + "\n\n" + 
         "네이버카페(공통) - https://cafe.naver.com/codecat" + "\n\n" + 
         "디스코드(공통) - https://discord.gg/cZ5r5PRTX5" + "\n\n" + 
@@ -244,7 +252,7 @@ function response(room, msg, sender, isGroupChat, replier, ImageDB) {
         "웹방" + "\n" + 
         "→ 웹" + "\n" + 
         "견적방" + "\n" + 
-        "→ 견적 ");
+        "→ 견적");
     }
 
     if((msg == "/고코위") && (room == "운영위방")) {
