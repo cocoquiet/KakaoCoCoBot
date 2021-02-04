@@ -84,30 +84,48 @@ function response(room, msg, sender, isGroupChat, replier, ImageDB) {
     "호로놈", "호로색", "호로쉑", "호로스까이", "호로스키", "후라들", "후래자식", "후레", "후뢰", 
     "凸"];
 
-    for(var i = 0; i < advertisement.length; i++) {
-        if(msg.indexOf(advertisement[i]) != -1 && len > 60) {
-            replier.reply("로그방", "광고 감지");
-            replier.reply(
-            "로그방", 
-            "감지 위치 : " + room + "\n" + 
-            "닉네임 : " + sender + "\n" + 
-            "키워드 : " + advertisement[i] + "\n" + 
-            roomBangjang(room));
+    if(room == "작곡방") { 
+        for(var i = 0; i < advertisement.length; i++) {
+            if(msg.indexOf(advertisement[i]) != -1 && len > 60) {
+                replier.reply("문제의 키워드를 발견했습니다\n닉네임 : " + sender);
+                replier.reply(roomBangjang(room));
+                break;
+            }
+        }
+    
+        for(var i = 0; i < cuss.length; i++) {
+            if(msg.indexOf(cuss[i]) != -1) {
+                replier.reply("문제의 키워드를 발견했습니다(" + cuss[i] + ")\n" + "\n닉네임 : " + sender);
+                replier.reply(roomBangjang(room));
+                break;
+            }
         }
     }
-   
-    for(var i = 0; i < cuss.length; i++) {
-        if(msg.indexOf(cuss[i]) != -1) {
-            replier.reply("로그방", room + " : 욕설 감지");
-            replier.reply(
-            "로그방", 
-            "감지 위치 : " + room + "\n" + 
-            "닉네임 : " + sender + "\n" + 
-            "키워드 : " + cuss[i] + "\n" + 
-            roomBangjang(room));
+    else {
+        for(var i = 0; i < advertisement.length; i++) {
+            if(msg.indexOf(advertisement[i]) != -1 && len > 60) {
+                replier.reply("로그방", "광고 감지");
+                replier.reply(
+                "로그방", 
+                "감지 위치 : " + room + "\n" + 
+                "닉네임 : " + sender + "\n" + 
+                "키워드 : " + advertisement[i] + "\n" + 
+                roomBangjang(room));
+            }
+        }
+    
+        for(var i = 0; i < cuss.length; i++) {
+            if(msg.indexOf(cuss[i]) != -1) {
+                replier.reply("로그방", room + " : 욕설 감지");
+                replier.reply(
+                "로그방", 
+                "감지 위치 : " + room + "\n" + 
+                "닉네임 : " + sender + "\n" + 
+                "키워드 : " + cuss[i] + "\n" + 
+                roomBangjang(room));
+            }
         }
     }
-
     var day = new Date();
 
 
