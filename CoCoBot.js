@@ -119,7 +119,7 @@ function response(room, msg, sender, isGroupChat, replier, ImageDB) {
             "/날짜" + "\n" + "오늘의 날짜를 알려줍니다." + "\n" + 
             "/시간" + "\n" + "현재 시각을 알려줍니다." + "\n" + 
             "/짖어" + "\n" + "짖습니다." + "\n" + 
-            "/고코위" + "\n" + "관리자들을 모두 호출시킵니다.");
+            "/호출" + "\n" + "관리자들의 호출 명령어를 알려줍니다.");
         }
     }
 
@@ -233,22 +233,36 @@ function response(room, msg, sender, isGroupChat, replier, ImageDB) {
         replier.reply("왈왈!");
     }
 
+    if((msg == "/호출") && (room == "운영위방")) {
+        replier.reply(
+        "C방" + "\n" + 
+        "→ C, c, 씨" + "\n" + 
+        "자바방 " + "\n" + 
+        "→ JAVA, java, 자바" + "\n" + 
+        "파이썬방" + "\n" + 
+        "→ python, 파이썬" + "\n" + 
+        "웹방" + "\n" + 
+        "→ 웹" + "\n" + 
+        "견적방" + "\n" + 
+        "→ 견적 ");
+    }
+
     if((msg == "/고코위") && (room == "운영위방")) {
         replier.reply("코양 양사 러리 깃고 Cpp 룰루 암고 Lu175 뽀로로 녹치");
         replier.reply("어셈블!!!!!!!");
     }
 
-    if((msg == "/C") && (room == "운영위방")) {
+    if(((msg == "/C") || (msg == "/c") || (msg == "/씨") || (msg == "/cpp") || (msg == "/C") || (msg == "/C"))&& (room == "운영위방")) {
         replier.reply("Cpp 러리 룰루 뽀로로 양사 코양");
         replier.reply("C 어셈블!!!!!!!");
     }
 
-    if((msg == "/자바") && (room == "운영위방")) {
+    if(((msg == "/JAVA") || (msg == "/java") || (msg == "/자바")) && (room == "운영위방")) {
         replier.reply("러리 Cpp 양사 코양");
         replier.reply("자바 어셈블!!!!!!!");
     }
 
-    if((msg == "/파이썬") && (room == "운영위방")) {
+    if(((msg == "/python") || (msg == "/파이썬")) && (room == "운영위방")) {
         replier.reply("코양 Cpp 깃고 러리 룰루 양사");
         replier.reply("파이썬 어셈블!!!!!!!");
     }
