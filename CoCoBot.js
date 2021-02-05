@@ -104,25 +104,32 @@ function response(room, msg, sender, isGroupChat, replier, ImageDB) {
     else {
         for(var i = 0; i < advertisement.length; i++) {
             if(msg.indexOf(advertisement[i]) != -1 && len > 60) {
-                replier.reply("로그방", "광고 감지");
                 replier.reply(
                 "로그방", 
+                "욕설 감지" + "\n" + 
                 "감지 위치 : " + room + "\n" + 
                 "닉네임 : " + sender + "\n" + 
                 "키워드 : " + advertisement[i] + "\n" + 
                 roomBangjang(room));
+                replier.reply(
+                "로그방", 
+                "문제의 메세지" + "\n" + msg);
             }
         }
     
         for(var i = 0; i < cuss.length; i++) {
             if(msg.indexOf(cuss[i]) != -1) {
-                replier.reply("로그방", room + " : 욕설 감지");
+                replier.reply("문제의 키워드를 발견했습니다.");
                 replier.reply(
                 "로그방", 
+                "욕설 감지" + "\n" + 
                 "감지 위치 : " + room + "\n" + 
-                "닉네임 : " + sender + "\n" + 
+                "닉네임 : " + sender + "\n" +
                 "키워드 : " + cuss[i] + "\n" + 
                 roomBangjang(room));
+                replier.reply(
+                "로그방", 
+                "문제의 메세지" + "\n" + msg);
             }
         }
     }
@@ -178,7 +185,7 @@ function response(room, msg, sender, isGroupChat, replier, ImageDB) {
     }
 
     if(msg == "/서버 개발자") { 
-        replier.reply("개발자: 암고, 양사, 코양\n관리자: 코양\n운영: 고양이들의 코딩 위원회(C-3)\nCopyright 2020. Cat Coding Committee. All rights reserved.");
+        replier.reply("개발자: 암고, 양사, 코양\n관리자: 코양\n운영: 고양이들의 코딩 위원회(C-3)\nCopyright 2020-2021. Cat Coding Committee. All rights reserved.");
     }
 
     if(msg == "/깃허브") {
@@ -266,7 +273,7 @@ function response(room, msg, sender, isGroupChat, replier, ImageDB) {
         "자바방 " + "\n" + 
         "→ JAVA, java, 자바" + "\n" + 
         "파이썬방" + "\n" + 
-        "→ python, 파이썬" + "\n" + 
+        "→ python, py, 파이썬" + "\n" + 
         "웹방" + "\n" + 
         "→ 웹" + "\n" + 
         "견적방" + "\n" + 
@@ -288,7 +295,7 @@ function response(room, msg, sender, isGroupChat, replier, ImageDB) {
         replier.reply("자바 어셈블!!!!!!!");
     }
 
-    if(((msg == "/python") || (msg == "/파이썬")) && (room == "운영위방")) {
+    if(((msg == "/python") || (msg == "/py") || (msg == "/파이썬")) && (room == "운영위방")) {
         replier.reply("코양 Cpp 깃고 러리 룰루 양사");
         replier.reply("파이썬 어셈블!!!!!!!");
     }
