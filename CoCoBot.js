@@ -5,6 +5,8 @@ The above copyright notice and this permission notice shall be included in all c
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
+const keylist = [];
+
 function roomBangjang(room) {
     if(room == "운영위방") {
         return "테스트중입니다";
@@ -115,6 +117,19 @@ function response(room, msg, sender, isGroupChat, replier, ImageDB) {
                         replier.reply(
                         "로그방", 
                         "문제의 메세지" + "\n" + msg);
+                    }
+                }
+
+                for (var i = 0; i < keylist.length; i++) {
+                    if (msg.indexOf(keylist[i]) != -1 && len > 60 && room != "3학년5반") {
+                        replier.reply(
+                            "로그방",
+                            "욕설 감지" + "\n" +
+                            "감지 위치 : " + room + "\n" +
+                            "닉네임 : " + sender + "\n" +
+                            "사용된 키 : " + keylist[i] + "\n" +
+                            roomBangjang(room));
+                        keylist.splice(msg.indexOf(keylist[i]), 1);
                     }
                 }
             
@@ -309,6 +324,19 @@ function response(room, msg, sender, isGroupChat, replier, ImageDB) {
             if((msg == "/견적") && (room == "운영위방")) {
                 replier.reply("양사 Cpp 깃고 러리 코양");
                 replier.reply("견적 어셈블!!!!!!!");
+            }
+
+            if ((msg == "/키생성") && (room = "운영위방")) {
+                var max = 16777216;
+                var min = 1048576;
+                var key = Math.floor(Math.random() * (max - min)) + min;
+                key = key.toString(16);
+                replier.reply("키 생성: " + key);
+                keylist.push(key);
+            }
+
+            if ((msg == "/키목록") && (room = "운영위방")) {
+                replier.reply(keylist);
             }
         }
     }
