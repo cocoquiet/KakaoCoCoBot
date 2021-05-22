@@ -5,6 +5,8 @@ The above copyright notice and this permission notice shall be included in all c
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
+
+
 const keylist = [];
 
 function roomBangjang(room) {
@@ -30,10 +32,12 @@ function roomBangjang(room) {
         return "양사, Mute Jack, KI-D, 블루링, 조담" + "\n신고 #신고 /신고";
     }
 }
-    
-    var player = null;
+ 
     
 function response(room, msg, sender, isGroupChat, replier, ImageDB) {
+
+    var len = msg.length;
+
     var roomList = ["운영위방", "C방", "자바방", "파이썬방", "웹방", "견적방", "작곡방"];
 
     //욕, 광고 감지 코드
@@ -87,14 +91,17 @@ function response(room, msg, sender, isGroupChat, replier, ImageDB) {
 
     for(var i = 0; i < roomList.length; i++) {
         if(room == roomList[i]) {
-            if(room == "작곡방") { 
-                for(var i = 0; i < advertisement.length; i++) {
-                    if(msg.indexOf(advertisement[i]) != -1 && len > 60) {
-                        replier.reply("문제의 키워드를 발견했습니다\n닉네임 : " + sender);
-                        replier.reply(roomBangjang(room));
-                        break;
+            if (room == "작곡방") { 
+                if (len > 60) {
+                    for (var i = 0; i < advertisement.length; i++) {
+                        if (msg.indexOf(advertisement[i]) != -1) {
+                            replier.reply("문제의 키워드를 발견했습니다\n닉네임 : " + sender);
+                            replier.reply(roomBangjang(room));
+                            break;
+                        }
                     }
                 }
+                
             
                 for(var i = 0; i < cuss.length; i++) {
                     if(msg.indexOf(cuss[i]) != -1) {
@@ -105,20 +112,7 @@ function response(room, msg, sender, isGroupChat, replier, ImageDB) {
                 }
             }
             else {
-                for(var i = 0; i < advertisement.length; i++) {
-                    if(msg.indexOf(advertisement[i]) != -1 && len > 60 && room != "3학년5반") {
-                        replier.reply(
-                        "로그방", 
-                        "욕설 감지" + "\n" + 
-                        "감지 위치 : " + room + "\n" + 
-                        "닉네임 : " + sender + "\n" + 
-                        "키워드 : " + advertisement[i] + "\n" + 
-                        roomBangjang(room));
-                        replier.reply(
-                        "로그방", 
-                        "문제의 메세지" + "\n" + msg);
-                    }
-                }
+                const Detecting = 1;
 
                 for (var i = 0; i < keylist.length; i++) {
                     if (msg.indexOf(keylist[i]) != -1 && room != "3학년5반" && room != "운영위방") {
@@ -129,10 +123,30 @@ function response(room, msg, sender, isGroupChat, replier, ImageDB) {
                             "닉네임 : " + sender + "\n" +
                             "사용된 키 : " + keylist[i] + "\n" +
                             roomBangjang(room));
-                        keylist.splice(msg.indexOf(keylist[i]), 1);
+                        const index = msg.indexOf(keylist[i]);
+                        keylist.splice(index, 1);
+                        Detecting = 0;
                     }
                 }
-            
+
+                if (len > 60) {
+                    for (var i = 0; i < advertisement.length; i++) {
+                        if (msg.indexOf(advertisement[i]) != -1 && room != "3학년5반" && Detecting != 0) {
+                            replier.reply(
+                                "로그방",
+                                "욕설 감지" + "\n" +
+                                "감지 위치 : " + room + "\n" +
+                                "닉네임 : " + sender + "\n" +
+                                "키워드 : " + advertisement[i] + "\n" +
+                                roomBangjang(room));
+                            replier.reply(
+                                "로그방",
+                                "문제의 메세지" + "\n" + msg);
+                        }
+                    }
+                }
+
+                
                 for(var i = 0; i < cuss.length; i++) {
                     if(msg.indexOf(cuss[i]) != -1 && room != "3학년5반") {
                         replier.reply("문제의 키워드를 발견했습니다.");
@@ -236,7 +250,8 @@ function response(room, msg, sender, isGroupChat, replier, ImageDB) {
                 }
             }
             
-            if((msg == "/가위바위보") && (room == "운영위방")) {
+            if ((msg == "/가위바위보") && (room == "운영위방")) {
+                var player = null;
                 replier.reply("가위바위보 게임을 시작합니다.\n가위, 바위, 보 중 하나를 내주세요.");
                 player = sender;
             }
@@ -331,7 +346,11 @@ function response(room, msg, sender, isGroupChat, replier, ImageDB) {
                 var min = 1048576;
                 var key = Math.floor(Math.random() * (max - min)) + min;
                 key = key.toString(16);
-                replier.reply("키 생성: " + key);
+                replier.reply(
+                    "아래 주어지는 키 번호는 홍보가 허용된 글에만 사용이 가능합니다." + "\n" +
+                    "아래 주어진 키를 홍보 글의 최상단에 붙여 넣어주세요." + "\n" + 
+                    "1회 홍보시 해당 키는 효력이 사라지며, 재홍보를 원할 시 다시 키를 재발급 받아야 합니다." + "\n" +
+                    "발급 키 : " + key);
                 keylist.push(key);
             }
 
