@@ -6,7 +6,6 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 */
 
 
-
 const keylist = [];
 
 function roomBangjang(room) {
@@ -32,12 +31,11 @@ function roomBangjang(room) {
         return "양사, Mute Jack, KI-D, 블루링, 조담" + "\n신고 #신고 /신고";
     }
 }
- 
+    
+var player = null;
     
 function response(room, msg, sender, isGroupChat, replier, ImageDB) {
-
     var len = msg.length;
-
     var roomList = ["운영위방", "C방", "자바방", "파이썬방", "웹방", "견적방", "작곡방"];
 
     //욕, 광고 감지 코드
@@ -121,10 +119,9 @@ function response(room, msg, sender, isGroupChat, replier, ImageDB) {
                             "홍보키 사용 : " + "\n" +
                             "감지 위치 : " + room + "\n" +
                             "닉네임 : " + sender + "\n" +
-                            "사용된 키 : " + keylist[i] + "\n" +
-                            roomBangjang(room));
-                        const index = msg.indexOf(keylist[i]);
-                        keylist.splice(index, 1);
+                            "사용된 키 : " + keylist[i]
+                            );
+                        keylist.splice(i, 1);
                         Detecting = 0;
                     }
                 }
@@ -250,8 +247,7 @@ function response(room, msg, sender, isGroupChat, replier, ImageDB) {
                 }
             }
             
-            if ((msg == "/가위바위보") && (room == "운영위방")) {
-                var player = null;
+            if((msg == "/가위바위보") && (room == "운영위방")) {
                 replier.reply("가위바위보 게임을 시작합니다.\n가위, 바위, 보 중 하나를 내주세요.");
                 player = sender;
             }
@@ -347,9 +343,9 @@ function response(room, msg, sender, isGroupChat, replier, ImageDB) {
                 var key = Math.floor(Math.random() * (max - min)) + min;
                 key = key.toString(16);
                 replier.reply(
-                    "아래 주어지는 키 번호는 홍보가 허용된 글에만 사용이 가능합니다." + "\n" +
+                    "아래 주어지는 키 번호는 홍보가 허용된 글에만 사용이 가능합니다" + "\n" +
                     "아래 주어진 키를 홍보 글의 최상단에 붙여 넣어주세요." + "\n" + 
-                    "1회 홍보시 해당 키는 효력이 사라지며, 재홍보를 원할 시 다시 키를 재발급 받아야 합니다." + "\n" +
+                    "1회 홍보시 해당 키는 효력이 사라지며, 재홍보를 원할 시 다시 키를 재발급 받아야 합니다." + "\n\n" +
                     "발급 키 : " + key);
                 keylist.push(key);
             }
