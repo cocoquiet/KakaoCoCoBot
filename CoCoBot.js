@@ -121,7 +121,7 @@ function response(room, msg, sender, isGroupChat, replier, ImageDB) {
                 }
 
                 for (var i = 0; i < keylist.length; i++) {
-                    if (msg.indexOf(keylist[i]) != -1 && room != "3학년5반") {
+                    if (msg.indexOf(keylist[i]) != -1 && room != "3학년5반" && room != "운영위방") {
                         replier.reply(
                             "로그방",
                             "홍보키 사용 : " + "\n" +
