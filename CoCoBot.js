@@ -121,10 +121,10 @@ function response(room, msg, sender, isGroupChat, replier, ImageDB) {
                 }
 
                 for (var i = 0; i < keylist.length; i++) {
-                    if (msg.indexOf(keylist[i]) != -1 && len > 60 && room != "3학년5반") {
+                    if (msg.indexOf(keylist[i]) != -1 && room != "3학년5반" && room != "운영위방") {
                         replier.reply(
                             "로그방",
-                            "욕설 감지" + "\n" +
+                            "홍보키 사용 : " + "\n" +
                             "감지 위치 : " + room + "\n" +
                             "닉네임 : " + sender + "\n" +
                             "사용된 키 : " + keylist[i] + "\n" +
