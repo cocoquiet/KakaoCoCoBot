@@ -122,9 +122,8 @@ function response(room, msg, sender, isGroupChat, replier, ImageDB) {
                             "감지 위치 : " + room + "\n" +
                             "닉네임 : " + sender + "\n" +
                             "사용된 키 : " + keylist[i] + "\n" +
-                            roomBangjang(room));
-                        const index = msg.indexOf(keylist[i]);
-                        keylist.splice(index, 1);
+                            );
+                        keylist.splice(i, 1);
                         Detecting = 0;
                     }
                 }
@@ -347,11 +346,11 @@ function response(room, msg, sender, isGroupChat, replier, ImageDB) {
                 var key = Math.floor(Math.random() * (max - min)) + min;
                 key = key.toString(16);
                 replier.reply(
-                    "아래 주어지는 키 번호는 홍보가 허용된 글에만 사용이 가능합니다." + "\n" +
+                    "아래 주어지는 키 번호는 홍보가 허용된 글에만 사용이 가능합니다" + "\n" +
                     "아래 주어진 키를 홍보 글의 최상단에 붙여 넣어주세요." + "\n" + 
-                    "1회 홍보시 해당 키는 효력이 사라지며, 재홍보를 원할 시 다시 키를 재발급 받아야 합니다." + "\n" +
+                    "1회 홍보시 해당 키는 효력이 사라지며, 재홍보를 원할 시 다시 키를 재발급 받아야 합니다." + "\n\n" +
                     "발급 키 : " + key);
-                keylist.push(key);
+                keylist.push(" " + key + " ");
             }
 
             if ((msg == "/키목록") && (room = "운영위방")) {
