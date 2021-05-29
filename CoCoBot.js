@@ -351,6 +351,9 @@ function response(room, msg, sender, isGroupChat, replier, ImageDB) {
             }
 
             if ((msg == "/키목록") && (room = "운영위방")) {
+                if (keylist.length == 0) {
+                    replier.reply("생성된 키가 없습니다.");
+                }
                 replier.reply(keylist);
             }
         }
