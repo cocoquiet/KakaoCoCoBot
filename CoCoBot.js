@@ -62,7 +62,7 @@ function response(room, msg, sender, isGroupChat, replier, ImageDB) {
     "븅", "븅신", "빌어먹", "빙시", "빙신", "빠구리", "빠굴", "빠큐", "뻐큐", "뻑큐", "뽁큐", 
     "ㅅㅂ", "ㅅㅐ", "상넘이", "상놈을", "상놈의", "상놈이", "새갸", "새기", "새꺄", "새끼", 
     "새키", "색끼", "생쑈", "세갸", "세꺄", "세끼", "섹스", "셰끼", "쉐기", "쉐끼", "쉐리", "쉐에기", "쉐키", "쉑", 
-    "쉨", "쉬발", "쉬밸", "쉬벌", "쉬뻘", "쉬펄", "쉽알", "스패킹", "스팽", "시끼", "시댕", "시뎅", "시랄", "시바", 
+    "쉨", "쉬발", "쉬밸", "쉬벌", "쉬뻘", "쉬펄", "쉽알", "스패킹", "스팽", "시끼", "시댕", "시뎅", "시랄",  
     "시발", "시벌", "시부랄", "시부럴", "시부레", "시부리", "시불", "시브랄", "시팍", "시팔", 
     "시펄", "심탱", "십8", "십라", "십새", "십세", "십쉐", "십쉐이", "십스키", "십쌔", "십창", "십탱", 
     "싶알", "ㅆ1발", "ㅆㅂ", "ㅆ앙", "ㅆㅍ", "ㅆㅣ", "싸가지", "싹아지", "쌉년", "쌍넘", "쌍년", "쌍놈", "쌍뇬", 
@@ -162,199 +162,203 @@ function response(room, msg, sender, isGroupChat, replier, ImageDB) {
             }
             var day = new Date();
 
-
-            // 도움말
-            if(msg == "/help" && room != "3학년5반") {
-                replier.reply(
-                "/help"  + "\n"+ "명령어에 대한 도움말 정보를 제공합니다." + "\n"+ 
-                "/채팅방 목록"  + "\n"+ "고코위의 모든 채팅방 링크를 표시합니다." + "\n" + 
-                "/서버 상태"  + "\n"+ "코코의 정보 및 상태를 표시합니다." + "\n" + 
-                "/서버 개발자"  + "\n"+ "코코봇의 개발자를 알려줍니다." + "\n" + 
-                "/깃허브"  + "\n"+ "관리자들의 깃허브 주소를 알려줍니다."); 
-                if(room == "운영위방") {
+            if (room != "3학년5반") {
+                // 도움말
+                if (msg == "/help") {
                     replier.reply(
-                    "관리자 전용 기능" + "\n\n" + 
-                    "코코야" + "\n" + "기분에 따라 대답하는 온도차가 큽니다." + "\n" + 
-                    "/가위바위보" + "\n" + "가위바위보를 합니다." + "\n" + 
-                    "/날짜" + "\n" + "오늘의 날짜를 알려줍니다." + "\n" + 
-                    "/시간" + "\n" + "현재 시각을 알려줍니다." + "\n" + 
-                    "/짖어" + "\n" + "짖습니다." + "\n" + 
-                    "/호출" + "\n" + "관리자들의 호출 명령어를 알려줍니다.");
+                        "/help" + "\n" + "명령어에 대한 도움말 정보를 제공합니다." + "\n" +
+                        "/채팅방 목록" + "\n" + "고코위의 모든 채팅방 링크를 표시합니다." + "\n" +
+                        "/서버 상태" + "\n" + "코코의 정보 및 상태를 표시합니다." + "\n" +
+                        "/서버 개발자" + "\n" + "코코봇의 개발자를 알려줍니다." + "\n" +
+                        "/깃허브" + "\n" + "관리자들의 깃허브 주소를 알려줍니다.");
+                    if (room == "운영위방") {
+                        replier.reply(
+                            "관리자 전용 기능" + "\n\n" +
+                            "코코야" + "\n" + "기분에 따라 대답하는 온도차가 큽니다." + "\n" +
+                            "/가위바위보" + "\n" + "가위바위보를 합니다." + "\n" +
+                            "/날짜" + "\n" + "오늘의 날짜를 알려줍니다." + "\n" +
+                            "/시간" + "\n" + "현재 시각을 알려줍니다." + "\n" +
+                            "/짖어" + "\n" + "짖습니다." + "\n" +
+                            "/호출" + "\n" + "관리자들의 호출 명령어를 알려줍니다.");
+                    }
                 }
-            }
 
-            // 기본 명령어 모음
-            if(msg == "/채팅방 목록" && room != "3학년5반") {
-                replier.reply(
-                "클릭시 방 목록 보기                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    " + "\n\n" + 
-                "저희는 여러 개의 방과 같이 활동하는 개발자 연합입니다. 다른 종류의 언어를 질문하고 싶으시면 밑의 링크를 타시길 바랍니다." + "\n\n" + 
-                "네이버카페(공통) - https://cafe.naver.com/codecat" + "\n\n" + 
-                "디스코드(공통) - https://discord.gg/cZ5r5PRTX5" + "\n\n" + 
-                "C언어, C#, C++, 게임 엔진 - https://open.kakao.com/o/ghFjlzr" + "\n\n" + 
-                "자바, 안드로이드 - https://open.kakao.com/o/goAvtbOb" + "\n\n" + 
-                "파이썬(ML), R - https://open.kakao.com/o/gWvnqvF" + "\n\n" + 
-                "웹 - https://open.kakao.com/o/gm2yL8kb" + "\n\n" + 
-                "조립, 견적, pc문제 - https://open.kakao.com/o/gEI0jymb");
-            }
-
-            if(msg == "/서버 상태" && room != "3학년5반") { 
-                replier.reply(
-                "봇 버전 : " + Bot.getVersion() + "\n" + 
-                "자바스크립트 버전 : " + Bot.getJsVersion() + "\n" +
-                "모델명: " + Device.getModelName() + "\n" +
-                "안드로이드 버전: " + Device.getAndroidVersion() + "\n" +
-                "안드로이드 API: " + Device.getApiLevel() + "\n" +
-                "배터리 잔량: " + Device.getBatteryLevel() + "% \n" +
-                "배터리 온도: " + Device.getBatteryTemp() + "°C" + "\n" + 
-                "상태: ON" + "\n" + 
-                "이름: 코코" 
-                );
-            }
-
-            if(msg == "/서버 개발자" && room != "3학년5반") { 
-                replier.reply("개발자: 암고, 양사, 코양\n관리자: 코양\n운영: 고양이들의 코딩 위원회(C-3)\nCopyright 2020-2021. Cat Coding Committee. All rights reserved.");
-            }
-
-            if(msg == "/깃허브" && room != "3학년5반") {
-                replier.reply(
-                "코양이 위원장 - https://github.com/easycastle" + "\n" + 
-                "양 사 - https://github.com/sat0317" + "\n" + 
-                "러 리 - https://github.com/Coalery" + "\n" + 
-                "고 수 - https://github.com/cpprhtn" + "\n" + 
-                "깃 고 - https://github.com/NewPremium" + "\n" + 
-                "암 고 - https://github.com/azure-06" + "\n" + 
-                "루 - https://github.com/Lu175" + "\n" + 
-                "뽀 로 로 - https://github.com/paxbun" + "\n" + 
-                "녹 색 치 킨 - https://github.com/IceJack");
-                replier.reply("다들 한번씩 놀러오세요~");
-            }
-
-
-            // 관리자 명령어 모음
-            if((msg == "코코야") && (room == "운영위방")) {
-                var answer = Math.floor(Math.random() * 4);
-                if(answer == 0) {
-                    replier.reply("네?");
+                // 기본 명령어 모음
+                if (msg == "/채팅방 목록") {
+                    replier.reply(
+                        "클릭시 방 목록 보기                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    " + "\n\n" +
+                        "저희는 여러 개의 방과 같이 활동하는 개발자 연합입니다. 다른 종류의 언어를 질문하고 싶으시면 밑의 링크를 타시길 바랍니다." + "\n\n" +
+                        "네이버카페(공통) - https://cafe.naver.com/codecat" + "\n\n" +
+                        "디스코드(공통) - https://discord.gg/cZ5r5PRTX5" + "\n\n" +
+                        "C언어, C#, C++, 게임 엔진 - https://open.kakao.com/o/ghFjlzr" + "\n\n" +
+                        "자바, 안드로이드 - https://open.kakao.com/o/goAvtbOb" + "\n\n" +
+                        "파이썬(ML), R - https://open.kakao.com/o/gWvnqvF" + "\n\n" +
+                        "웹 - https://open.kakao.com/o/gm2yL8kb" + "\n\n" +
+                        "조립, 견적, pc문제 - https://open.kakao.com/o/gEI0jymb");
                 }
-                else if(answer == 1) {
-                    replier.reply("뭐");
+
+                if (msg == "/서버 상태") {
+                    replier.reply(
+                        "봇 버전 : " + Bot.getVersion() + "\n" +
+                        "자바스크립트 버전 : " + Bot.getJsVersion() + "\n" +
+                        "모델명: " + Device.getModelName() + "\n" +
+                        "안드로이드 버전: " + Device.getAndroidVersion() + "\n" +
+                        "안드로이드 API: " + Device.getApiLevel() + "\n" +
+                        "배터리 잔량: " + Device.getBatteryLevel() + "% \n" +
+                        "배터리 온도: " + Device.getBatteryTemp() + "°C" + "\n" +
+                        "상태: ON" + "\n" +
+                        "이름: 코코"
+                    );
                 }
-                else if(answer == 2) {
-                    replier.reply("아 왜 불러ㅡㅡ");
+
+                if (msg == "/서버 개발자") {
+                    replier.reply("개발자: 암고, 양사, 코양\n관리자: 코양\n운영: 고양이들의 코딩 위원회(C-3)\nCopyright 2020-2021. Cat Coding Committee. All rights reserved.");
                 }
-                else if(answer == 3) {
-                    replier.reply("멍멍!");
+
+                if (msg == "/깃허브") {
+                    replier.reply(
+                        "코양이 위원장 - https://github.com/easycastle" + "\n" +
+                        "양 사 - https://github.com/sat0317" + "\n" +
+                        "러 리 - https://github.com/Coalery" + "\n" +
+                        "고 수 - https://github.com/cpprhtn" + "\n" +
+                        "깃 고 - https://github.com/NewPremium" + "\n" +
+                        "암 고 - https://github.com/azure-06" + "\n" +
+                        "루 - https://github.com/Lu175" + "\n" +
+                        "뽀 로 로 - https://github.com/paxbun" + "\n" +
+                        "녹 색 치 킨 - https://github.com/IceJack");
+                    replier.reply("다들 한번씩 놀러오세요~");
                 }
             }
             
-            if((msg == "/가위바위보") && (room == "운영위방")) {
-                replier.reply("가위바위보 게임을 시작합니다.\n가위, 바위, 보 중 하나를 내주세요.");
-                player = sender;
-            }
-            if((player == sender) && (msg == "가위" || msg == "바위" || msg == "보")) {
-                var result = Math.floor(Math.random() * 3);
-                if(result == 0) {
-                    if(msg == "가위") {
-                        replier.reply("저는 바위를 냈습니다.\n개한테 지냐ㅋ");
+
+
+            // 관리자 명령어 모음
+            if (room == "운영위방") {
+                if (msg == "코코야") {
+                    var answer = Math.floor(Math.random() * 4);
+                    if (answer == 0) {
+                        replier.reply("네?");
                     }
-                    else if(msg == "바위") {
-                        replier.reply("저는 보를 냈습니다.\n개한테 지냐ㅋ");
+                    else if (answer == 1) {
+                        replier.reply("뭐");
                     }
-                    else if(msg == "보") {
-                        replier.reply("저는 가위를 냈습니다.\n개한테 지냐ㅋ");
+                    else if (answer == 2) {
+                        replier.reply("아 왜 불러ㅡㅡ");
                     }
-                }
-                else if(result == 1) {
-                    replier.reply("저는 " + msg + "를 냈습니다.\n비겼습니다.");
-                }
-                else if(result == 2) {
-                    if(msg == "가위") {
-                        replier.reply("저는 보를 냈습니다.\n당신이 이겼습니다.");
-                    }
-                    else if(msg == "바위") {
-                        replier.reply("저는 가위를 냈습니다.\n당신이 이겼습니다.");
-                    }
-                    else if(msg == "보") {
-                        replier.reply("저는 바위를 냈습니다.\n당신이 이겼습니다.");
+                    else if (answer == 3) {
+                        replier.reply("멍멍!");
                     }
                 }
-                player = null;
-            }
 
-            if((msg == "/날짜") && (room == "운영위방")) {
-                replier.reply("오늘은 " + (day.getMonth() + 1) + "월 " + day.getDate() + "일 입니다.");
-            }
-
-            if((msg == "/시간") && (room == "운영위방")) {
-                replier.reply("지금은 " + day.getHours() + "시 " + day.getMinutes() + "분 " + day.getSeconds() + "초입니다.");
-            }
-
-            if((msg == "/짖어") && (room == "운영위방")) {
-                replier.reply("왈왈!");
-            }
-
-            if((msg == "/호출") && (room == "운영위방")) {
-                replier.reply(
-                "C방" + "\n" + 
-                "→ C, c, 씨" + "\n" + 
-                "자바방 " + "\n" + 
-                "→ JAVA, java, 자바" + "\n" + 
-                "파이썬방" + "\n" + 
-                "→ python, py, 파이썬" + "\n" + 
-                "웹방" + "\n" + 
-                "→ 웹" + "\n" + 
-                "견적방" + "\n" + 
-                "→ 견적");
-            }
-
-            if((msg == "/고코위") && (room == "운영위방")) {
-                replier.reply("코양 양사 러리 깃고 Cpp 룰루 암고 Lu175 뽀로로 녹치");
-                replier.reply("어셈블!!!!!!!");
-            }
-
-            if(((msg == "/C") || (msg == "/c") || (msg == "/씨") || (msg == "/cpp") || (msg == "/C") || (msg == "/C"))&& (room == "운영위방")) {
-                replier.reply("Cpp 러리 룰루 뽀로로 양사 코양");
-                replier.reply("C 어셈블!!!!!!!");
-            }
-
-            if(((msg == "/JAVA") || (msg == "/java") || (msg == "/자바")) && (room == "운영위방")) {
-                replier.reply("러리 Cpp 양사 코양");
-                replier.reply("자바 어셈블!!!!!!!");
-            }
-
-            if(((msg == "/python") || (msg == "/py") || (msg == "/파이썬")) && (room == "운영위방")) {
-                replier.reply("코양 Cpp 깃고 러리 룰루 양사");
-                replier.reply("파이썬 어셈블!!!!!!!");
-            }
-
-            if((msg == "/웹") && (room == "운영위방")) {
-                replier.reply("코양 Cpp 러리 뽀로로 양사 녹치");
-                replier.reply("웹 어셈블!!!!!!!");
-            }
-
-            if((msg == "/견적") && (room == "운영위방")) {
-                replier.reply("양사 Cpp 깃고 러리 코양");
-                replier.reply("견적 어셈블!!!!!!!");
-            }
-
-            if ((msg == "/키생성") && (room = "운영위방")) {
-                var max = 16777216;
-                var min = 1048576;
-                var key = Math.floor(Math.random() * (max - min)) + min;
-                key = key.toString(16);
-                replier.reply(
-                    "아래 주어지는 키 번호는 홍보가 허용된 글에만 사용이 가능합니다" + "\n" +
-                    "아래 주어진 키를 홍보 글의 최상단에 붙여 넣어주세요." + "\n" + 
-                    "1회 홍보시 해당 키는 효력이 사라지며, 재홍보를 원할 시 다시 키를 재발급 받아야 합니다." + "\n\n" +
-                    "발급 키 : " + key);
-                keylist.push(key);
-            }
-
-            if ((msg == "/키목록") && (room = "운영위방")) {
-                if (keylist.length == 0) {
-                    replier.reply("생성된 키가 없습니다.");
+                if (msg == "/가위바위보") {
+                    replier.reply("가위바위보 게임을 시작합니다.\n가위, 바위, 보 중 하나를 내주세요.");
+                    player = sender;
                 }
-                replier.reply(keylist);
+                if ((player == sender) && (msg == "가위" || msg == "바위" || msg == "보")) {
+                    var result = Math.floor(Math.random() * 3);
+                    if (result == 0) {
+                        if (msg == "가위") {
+                            replier.reply("저는 바위를 냈습니다.\n개한테 지냐ㅋ");
+                        }
+                        else if (msg == "바위") {
+                            replier.reply("저는 보를 냈습니다.\n개한테 지냐ㅋ");
+                        }
+                        else if (msg == "보") {
+                            replier.reply("저는 가위를 냈습니다.\n개한테 지냐ㅋ");
+                        }
+                    }
+                    else if (result == 1) {
+                        replier.reply("저는 " + msg + "를 냈습니다.\n비겼습니다.");
+                    }
+                    else if (result == 2) {
+                        if (msg == "가위") {
+                            replier.reply("저는 보를 냈습니다.\n당신이 이겼습니다.");
+                        }
+                        else if (msg == "바위") {
+                            replier.reply("저는 가위를 냈습니다.\n당신이 이겼습니다.");
+                        }
+                        else if (msg == "보") {
+                            replier.reply("저는 바위를 냈습니다.\n당신이 이겼습니다.");
+                        }
+                    }
+                    player = null;
+                }
+
+                if (msg == "/날짜") {
+                    replier.reply("오늘은 " + (day.getMonth() + 1) + "월 " + day.getDate() + "일 입니다.");
+                }
+
+                if (msg == "/시간") {
+                    replier.reply("지금은 " + day.getHours() + "시 " + day.getMinutes() + "분 " + day.getSeconds() + "초입니다.");
+                }
+
+                if (msg == "/짖어") {
+                    replier.reply("왈왈!");
+                }
+
+                if (msg == "/호출") {
+                    replier.reply(
+                        "C방" + "\n" +
+                        "→ C, c, 씨" + "\n" +
+                        "자바방 " + "\n" +
+                        "→ JAVA, java, 자바" + "\n" +
+                        "파이썬방" + "\n" +
+                        "→ python, py, 파이썬" + "\n" +
+                        "웹방" + "\n" +
+                        "→ 웹" + "\n" +
+                        "견적방" + "\n" +
+                        "→ 견적");
+                }
+
+                if (msg == "/고코위") {
+                    replier.reply("코양 양사 러리 깃고 Cpp 룰루 암고 Lu175 뽀로로 녹치");
+                    replier.reply("어셈블!!!!!!!");
+                }
+
+                if (((msg == "/C") || (msg == "/c") || (msg == "/씨") || (msg == "/cpp") || (msg == "/C") || (msg == "/C"))) {
+                    replier.reply("Cpp 러리 룰루 뽀로로 양사 코양");
+                    replier.reply("C 어셈블!!!!!!!");
+                }
+
+                if (((msg == "/JAVA") || (msg == "/java") || (msg == "/자바"))) {
+                    replier.reply("러리 Cpp 양사 코양");
+                    replier.reply("자바 어셈블!!!!!!!");
+                }
+
+                if (((msg == "/python") || (msg == "/py") || (msg == "/파이썬"))) {
+                    replier.reply("코양 Cpp 깃고 러리 룰루 양사");
+                    replier.reply("파이썬 어셈블!!!!!!!");
+                }
+
+                if (msg == "/웹") {
+                    replier.reply("코양 Cpp 러리 뽀로로 양사 녹치");
+                    replier.reply("웹 어셈블!!!!!!!");
+                }
+
+                if (msg == "/견적") {
+                    replier.reply("양사 Cpp 깃고 러리 코양");
+                    replier.reply("견적 어셈블!!!!!!!");
+                }
+
+                if (msg == "/키생성") {
+                    var max = 16777216;
+                    var min = 1048576;
+                    var key = Math.floor(Math.random() * (max - min)) + min;
+                    key = key.toString(16);
+                    replier.reply(
+                        "아래 주어지는 키 번호는 홍보가 허용된 글에만 사용이 가능합니다" + "\n" +
+                        "아래 주어진 키를 홍보 글의 최상단에 붙여 넣어주세요." + "\n" +
+                        "1회 홍보시 해당 키는 효력이 사라지며, 재홍보를 원할 시 다시 키를 재발급 받아야 합니다." + "\n\n" +
+                        "발급 키 : " + key);
+                    keylist.push(key);
+                }
+
+                if (msg == "/키목록") {
+                    if (keylist.length == 0) {
+                        replier.reply("생성된 키가 없습니다.");
+                    }
+                    replier.reply(keylist);
+                }
             }
         }
     }
