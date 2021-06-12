@@ -7,6 +7,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 
 const keylist = [];
+var key_cnt = 0;
 
 function roomBangjang(room) {
     if(room == "운영위방") {
@@ -212,7 +213,7 @@ function response(room, msg, sender, isGroupChat, replier, ImageDB) {
                 }
 
                 if (msg == "/서버 개발자") {
-                    replier.reply("개발자: 암고, 양사, 코양\n관리자: 코양\n운영: 고양이들의 코딩 위원회(C-3)\nCopyright 2020-2021. Cat Coding Committee. All rights reserved.");
+                    replier.reply("개발자: 암고, 양사, 코양, 고수\n관리자: 코양\n운영: 고양이들의 코딩 위원회(C-3)\nCopyright 2020-2021. Cat Coding Committee. All rights reserved.");
                 }
 
                 if (msg == "/깃허브") {
@@ -339,8 +340,8 @@ function response(room, msg, sender, isGroupChat, replier, ImageDB) {
                     replier.reply("양사 Cpp 깃고 러리 코양");
                     replier.reply("견적 어셈블!!!!!!!");
                 }
-
-                if (msg == "/키생성") {
+                
+                if (msg == ("/키생성" + key_cnt)) {
                     var max = 16777216;
                     var min = 1048576;
                     var key = Math.floor(Math.random() * (max - min)) + min;
@@ -350,7 +351,8 @@ function response(room, msg, sender, isGroupChat, replier, ImageDB) {
                         "아래 주어진 키를 홍보 글의 최상단에 붙여 넣어주세요." + "\n" +
                         "1회 홍보시 해당 키는 효력이 사라지며, 재홍보를 원할 시 다시 키를 재발급 받아야 합니다." + "\n\n" +
                         "발급 키 : " + key);
-                    keylist.push(key);
+                    for (var i = 0; i < key_cnt; i++)
+                        keylist.push(key);
                 }
 
                 if (msg == "/키목록") {
