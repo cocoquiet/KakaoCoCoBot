@@ -341,15 +341,23 @@ function response(room, msg, sender, isGroupChat, replier, ImageDB) {
                     replier.reply("견적 어셈블!!!!!!!");
                 }
                 
-                if (msg == ("/키생성" + key_cnt)) {
+                if (msg == "/키생성") {
                     var max = 16777216;
                     var min = 1048576;
                     var key = Math.floor(Math.random() * (max - min)) + min;
                     key = key.toString(16);
+
+                    replier.reply("생성할 키 갯수 (1~3사이 숫자 입력)");
+                    player = sender;
+                    if (player == sender) {
+                        key_cnt = Number(msg);
+                    }
+                    player = null;
+
                     replier.reply(
                         "아래 주어지는 키 번호는 홍보가 허용된 글에만 사용이 가능합니다" + "\n" +
                         "아래 주어진 키를 홍보 글의 최상단에 붙여 넣어주세요." + "\n" +
-                        "1회 홍보시 해당 키는 효력이 사라지며, 재홍보를 원할 시 다시 키를 재발급 받아야 합니다." + "\n\n" +
+                        key_cnt +"회 홍보시 해당 키는 효력이 사라지며, 재홍보를 원할 시 다시 키를 재발급 받아야 합니다." + "\n\n" +
                         "발급 키 : " + key);
                     for (var i = 0; i < key_cnt; i++)
                         keylist.push(key);
