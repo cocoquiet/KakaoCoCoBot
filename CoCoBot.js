@@ -8,6 +8,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 const keylist = [];
 var key_cnt = 0;
+var key = 0;
 
 function roomBangjang(room) {
     if(room == "운영위방") {
@@ -344,7 +345,7 @@ function response(room, msg, sender, isGroupChat, replier, ImageDB) {
                 if (msg == "/키생성") {
                     var max = 16777216;
                     var min = 1048576;
-                    var key = Math.floor(Math.random() * (max - min)) + min;
+                    key = Math.floor(Math.random() * (max - min)) + min;
                     key = key.toString(16);
 
                     replier.reply("생성할 키 갯수 (1~3사이 숫자 입력)");
