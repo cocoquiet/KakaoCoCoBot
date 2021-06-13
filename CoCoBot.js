@@ -349,18 +349,19 @@ function response(room, msg, sender, isGroupChat, replier, ImageDB) {
 
                     replier.reply("생성할 키 갯수 (1~3사이 숫자 입력)");
                     player = sender;
-                    if ((player == sender) && (msg == "1" || msg == "2" || msg == "3")) {
-                        key_cnt = Number(msg);
-                    }
-                    player = null;
+                }
+                if ((player == sender) && (msg == "1" || msg == "2" || msg == "3")) {
+                    key_cnt = Number(msg);
 
                     replier.reply(
                         "아래 주어지는 키 번호는 홍보가 허용된 글에만 사용이 가능합니다" + "\n" +
                         "아래 주어진 키를 홍보 글의 최상단에 붙여 넣어주세요." + "\n" +
-                        key_cnt +"회 홍보시 해당 키는 효력이 사라지며, 재홍보를 원할 시 다시 키를 재발급 받아야 합니다." + "\n\n" +
+                        key_cnt + "회 홍보시 해당 키는 효력이 사라지며, 재홍보를 원할 시 다시 키를 재발급 받아야 합니다." + "\n\n" +
                         "발급 키 : " + key);
                     for (var i = 0; i < key_cnt; i++)
                         keylist.push(key);
+
+                    player = null;
                 }
 
                 if (msg == "/키목록") {
