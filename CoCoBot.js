@@ -8,7 +8,6 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 const keylist = [];
 var key_cnt = 0;
-var key = 0;
 
 function roomBangjang(room) {
     if(room == "운영위방") {
@@ -343,17 +342,15 @@ function response(room, msg, sender, isGroupChat, replier, ImageDB) {
                 }
                 
                 if (msg == "/키생성") {
-                    var max = 16777216;
-                    var min = 1048576;
-                    key = Math.floor(Math.random() * (max - min)) + min;
-                    key = key.toString(16);
-
                     replier.reply("생성할 키 갯수 (1~3사이 숫자 입력)");
                     player = sender;
                 }
                 if ((player == sender) && (msg == "1" || msg == "2" || msg == "3")) {
                     key_cnt = Number(msg);
-
+                    var max = 16777216;
+                    var min = 1048576;
+                    var key = Math.floor(Math.random() * (max - min)) + min;
+                    key = key.toString(16);
                     replier.reply(
                         "아래 주어지는 키 번호는 홍보가 허용된 글에만 사용이 가능합니다" + "\n" +
                         "아래 주어진 키를 홍보 글의 최상단에 붙여 넣어주세요." + "\n" +
