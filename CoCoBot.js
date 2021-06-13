@@ -349,7 +349,7 @@ function response(room, msg, sender, isGroupChat, replier, ImageDB) {
 
                     replier.reply("생성할 키 갯수 (1~3사이 숫자 입력)");
                     player = sender;
-                    if (player == sender) {
+                    if ((player == sender) && (msg == "1" || msg == "2" || msg == "3")) {
                         key_cnt = Number(msg);
                     }
                     player = null;
