@@ -1,0 +1,15 @@
+{
+	"New Command Snippet": {
+		"scope": "javascript",
+		"prefix": "command",
+		"body": [
+			"'$1': {",
+			"  allow: [ $2 ],",
+			"  msg: (room, sender, args) => {",
+			"    $3",
+			"  }",
+			"}"
+		],
+		"description": "Make new command snippet for CocoBot"
+	}
+}
