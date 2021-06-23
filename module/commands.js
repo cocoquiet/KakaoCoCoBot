@@ -260,11 +260,11 @@ const commands = {
       const max = 16777216;
       const min = 1048576;
 
-      if(isNumeric(msg)) {
+      if(!isNumeric(args[0])) {
         return "숫자를 입력해주세요."
       }
 
-      let key_cnt = Number(msg);
+      let key_cnt = Number(args[0]);
       let key = Math.floor(Math.random() * (max - min)) + min;
       key = key.toString(16);
       

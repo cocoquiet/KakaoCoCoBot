@@ -17,11 +17,13 @@ const cuss = wrongWords.cuss;
 const limitedLen = 60; // 광고 키워드 탐지 기준
 
 function response(room, msg, sender, isGroupChat, replier, ImageDB) {
-    if(commands.isValidRoom(room)) return;
+    if(!commands.isValidRoom(room)) return;
+
+    let len = msg.length;
 
     //욕, 광고 감지 코드
     if (room === ROOM.COMPOSITION) {
-        if (msg.length > limitedLen) {
+        if (len > limitedLen) {
             for (var i = 0; i < advertisement.length; i++) {
                 if (msg.indexOf(advertisement[i]) != -1) {
                     replier.reply("문제의 키워드를 발견했습니다\n닉네임 : " + sender);
@@ -54,7 +56,7 @@ function response(room, msg, sender, isGroupChat, replier, ImageDB) {
             }
         }
 
-        if (msg.length > limitedLen) {
+        if (len > limitedLen) {
             for (var i = 0; i < advertisement.length; i++) {
                 if (msg.indexOf(advertisement[i]) != -1) {
                     replier.reply(
@@ -86,8 +88,11 @@ function response(room, msg, sender, isGroupChat, replier, ImageDB) {
         }
     }
 
-    let msg = commands.execCommand(room, sender, msg);
-    if(msg !== null) {
-        replier.reply(msg);
+    let result = commands.execCommand(room, sender, msg);
+    if(result !== null) {
+        let resultSplit = result.split(';');
+        for(let i = 0; i < resultSplit.length; i++) {
+            replier.reply(resultSplit[i]);
+        }
     }
 }
