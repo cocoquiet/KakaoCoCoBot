@@ -10,6 +10,7 @@ const roomLeaders = require('room_leaders.js');
 const commands = require('commands.js');
 
 const ROOM = commands.ROOM;
+const KEY = commands.KEY;
 const advertisement = wrongWords.advertisement
 const cuss = wrongWords.cuss;
 
@@ -39,16 +40,16 @@ function response(room, msg, sender, isGroupChat, replier, ImageDB) {
         }
     }
     else {
-        for (var i = 0; i < keylist.length; i++) {
-            if (msg.indexOf(keylist[i]) != -1 && room != "운영위방") {
+        for (var i = 0; i < KEY.keyCnt; i++) {
+            if (msg.indexOf(KEY.getKey[i]) != -1 && room != "운영위방") {
                 replier.reply(
                     "로그방",
                     "홍보키 사용 : " + "\n" +
                     "감지 위치 : " + room + "\n" +
                     "닉네임 : " + sender + "\n" +
-                    "사용된 키 : " + keylist[i]
+                    "사용된 키 : " + KEY.getKey[i]
                 );
-                commands.useKey(i);
+                KEY.useKey(i);
                 return;
             }
         }
@@ -64,9 +65,7 @@ function response(room, msg, sender, isGroupChat, replier, ImageDB) {
                         "키워드 : " + advertisement[i] + "\n" +
                         roomLeaders.getLeadersByRoom(room)
                     );
-                    replier.reply(
-                        "로그방",
-                        "문제의 메세지" + "\n" + msg);
+                    replier.reply("로그방", "문제의 메세지" + "\n" + msg);
                 }
             }
         }
@@ -82,10 +81,13 @@ function response(room, msg, sender, isGroupChat, replier, ImageDB) {
                     "키워드 : " + cuss[i] + "\n" + 
                     roomLeaders.getLeadersByRoom(room)
                 );
-                replier.reply(
-                "로그방", 
-                "문제의 메세지" + "\n" + msg);
+                replier.reply("로그방", "문제의 메세지" + "\n" + msg);
             }
         }
+    }
+
+    let msg = commands.execCommand(room, sender, msg);
+    if(msg !== null) {
+        replier.reply(msg);
     }
 }

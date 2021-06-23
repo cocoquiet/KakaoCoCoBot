@@ -5,8 +5,7 @@ const ROOM = {
   PYTHON: '파이썬방',
   WEB: '웹방',
   HARDWARE: '견적방',
-  COMPOSITION: '작곡방',
-  ALL: '전체방'
+  COMPOSITION: '작곡방'
 };
 
 const keylist = [];
@@ -57,9 +56,9 @@ function isNumeric(data) {
 //   }
 // }
 // 답변 같은 경우, 세미콜론으로 구분하여 반환하면 따로 보낸다.
-const messages = {
+const commands = {
   '/help': {
-    allow: [ ROOM.ALL ],
+    allow: [ ROOM.ADMIN, ROOM.C, ROOM.JAVA, ROOM.PYTHON, ROOM.WEB, ROOM.HARDWARE, ROOM.COMPOSITION ],
     msg: (room, sender, args) => {
       result = "/help" + "\n" + "명령어에 대한 도움말 정보를 제공합니다." + "\n" +
                "/채팅방 목록" + "\n" + "고코위의 모든 채팅방 링크를 표시합니다." + "\n" +
@@ -82,7 +81,7 @@ const messages = {
     }
   },
   '/채팅방': {
-    allow: [ ROOM.ALL ],
+    allow: [ ROOM.ADMIN, ROOM.C, ROOM.JAVA, ROOM.PYTHON, ROOM.WEB, ROOM.HARDWARE, ROOM.COMPOSITION ],
     msg: (room, sender, args) => {
       if(args[0] !== '목록') return null;
       return "클릭시 방 목록 보기                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    " + "\n\n" +
@@ -97,7 +96,7 @@ const messages = {
     }
   },
   '/서버': {
-    allow: [ ROOM.ALL ],
+    allow: [ ROOM.ADMIN, ROOM.C, ROOM.JAVA, ROOM.PYTHON, ROOM.WEB, ROOM.HARDWARE, ROOM.COMPOSITION ],
     msg: (room, sender, args) => {
       if(args[0] === '상태') {
         return "봇 버전 : " + Bot.getVersion() + "\n" +
@@ -118,7 +117,7 @@ const messages = {
     }
   },
   '/깃허브': {
-    allow: [ ROOM.ALL ],
+    allow: [ ROOM.ADMIN, ROOM.C, ROOM.JAVA, ROOM.PYTHON, ROOM.WEB, ROOM.HARDWARE, ROOM.COMPOSITION ],
     msg: (room, sender, args) => {
       return "코양이 위원장 - https://github.com/easycastle" + "\n" +
              "양 사 - https://github.com/sat0317" + "\n" +
@@ -302,6 +301,25 @@ function isValidRoom(room) {
   return false;
 }
 
+function execCommand(room, sender, msg) {
+  let split = msg.split(' ');
+
+  let command = split[0];
+  let args = split.slice(1);
+
+  let cmdObj = commands[command];
+
+  if(cmdObj === undefined) return null; // 찾을 수 없는 명령어
+  if(cmdObj.allow.indexOf(room) === -1) return null; // 명령어를 사용할 수 없는 방
+
+  return cmdObj.msg(room, sender, args);
+}
+
 exports.ROOM = ROOM;
-exports.useKey = useKey;
 exports.isValidRoom = isValidRoom;
+exports.KEY = {
+  useKey: useKey,
+  keyCnt: () => keylist.length,
+  getKey: (idx) => keylist[idx]
+};
+exports.execCommand = execCommand;
