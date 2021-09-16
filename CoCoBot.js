@@ -13,23 +13,26 @@ function roomBangjang(room) {
     if(room == "운영위방") {
         return "테스트중입니다";
     }
-    if(room == "C방") {
-        return "Cpp, 러리, 룰루, 뽀로로, 양사, 코양" + "\n신고 #신고 /신고";
+    else if(room == "C방") {
+        return "뽀로로 Cpp Lu175 러리 양사 코양" + "\n신고 #신고 /신고";
     }
-    if(room === "자바방") {
-        return "러리, Cpp, 양사, 코양" + "\n신고 #신고 /신고";
+    else if(room === "자바방") {
+        return "러리 Cpp 녹치 양사 코양" + "\n신고 #신고 /신고";
         }
-    if(room == "파이썬방") {
-        return "코양, Cpp, 깃고, 러리, 룰루, 양사" + "\n신고 #신고 /신고";
+    else if(room == "파이썬방") {
+        return "코양 Cpp 깃고 러리 룰루 양사" + "\n신고 #신고 /신고";
     }
-    if(room == "웹방") {
-        return "코양, Cpp, 러리, 뽀로로, 양사, 녹치" + "\n신고 #신고 /신고";
+    else if(room == "웹방") {
+        return "코양 Cpp 녹치 러리 뽀로로 양사" + "\n신고 #신고 /신고";
     }
-    if(room == "견적방") {
-        return "양사, Cpp, 깃고, 러리, 코양" + "\n신고 #신고 /신고";
+    else if(room == "AI방") {
+        return "Cpp 뽀로로 코양" + "\n신고 #신고 /신고";
     }
-    if(room == "작곡방") {
-        return "양사, Mute Jack, KI-D, 블루링, 조담" + "\n신고 #신고 /신고";
+    else if(room == "견적방") {
+        return "양사 Cpp 깃고 녹치 러리 코양" + "\n신고 #신고 /신고";
+    }
+    else if(room == "작곡방") {
+        return "양사, Mute Jack, 황병욱, 블루링, 조담" + "\n신고 #신고 /신고";
     }
 }
     
@@ -37,7 +40,7 @@ var player = null;
     
 function response(room, msg, sender, isGroupChat, replier, ImageDB) {
     var len = msg.length;
-    var roomList = ["운영위방", "C방", "자바방", "파이썬방", "웹방", "견적방", "작곡방"];
+    var roomList = ["운영위방", "C방", "자바방", "파이썬방", "웹방", "AI방", "견적방", "작곡방"];
 
     //욕, 광고 감지 코드
     var advertisement = ["www1.president.go.kr","소다방", "합법", "제태크", "재테크", "선착순", "성인방송", "성인 방송", "섹시", "수익", "야동", "t.me","band.", "광고", "가리기", "갱뱅", "NO모", "배팅", "결혼 등급", "투자금", "급전", "무료수신거부", "홍보대행", "고객만족", "시노스", "베팅", "파워볼", "미니게임", "카지노", "주식", "원금보장", "원금 보장", "홍보", "twitch", "사례"];
