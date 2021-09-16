@@ -40,7 +40,7 @@ function response(room, msg, sender, isGroupChat, replier, ImageDB) {
     var roomList = ["운영위방", "C방", "자바방", "파이썬방", "웹방", "견적방", "작곡방"];
 
     //욕, 광고 감지 코드
-    var advertisement = ["www1.president.go.kr", "http://", "https://","소다방", "합법", "제태크", "재테크", "선착순", "성인방송", "성인 방송", "섹시", "수익", "야동", "t.me","band.", "광고", "가리기", "갱뱅", "NO모", "배팅", "결혼 등급", "투자금", "급전", "무료수신거부", "홍보대행", "고객만족", "시노스", "베팅", "파워볼", "미니게임", "카지노", "주식", "원금보장", "원금 보장", "홍보", "twitch", "사례"];
+    var advertisement = ["www1.president.go.kr","소다방", "합법", "제태크", "재테크", "선착순", "성인방송", "성인 방송", "섹시", "수익", "야동", "t.me","band.", "광고", "가리기", "갱뱅", "NO모", "배팅", "결혼 등급", "투자금", "급전", "무료수신거부", "홍보대행", "고객만족", "시노스", "베팅", "파워볼", "미니게임", "카지노", "주식", "원금보장", "원금 보장", "홍보", "twitch", "사례"];
     
     var cuss = [
     "10새리", "10세리", "10쉐이", "10쉑", "10스", "10쌔", "10쌔기", "10쎄", "10창", "10탱", 
@@ -58,7 +58,7 @@ function response(room, msg, sender, isGroupChat, replier, ImageDB) {
     "뒤질래", "등신", "디져라", "디진다", "디질래", "따식", "때놈", "또라이", "똘아이", "뙈놈", "뙤놈", 
     "뙨넘", "뙨놈", "뚜쟁", "뛰발", "띄발", "띠바", "띠발", "띠발", "띠밤", "띠불", "띠ㅋ발", "띠팔", 
     "메친넘", "메친놈", "미췬", "미친넘", "미친년", "미친놈", "미친스까이", "미틴", 
-    "바랄년", "뱅마", "뱅신", "벼엉신", "병쉰", "병신", "병자", "부랄", "부럴", "불알", "불할", "붙어먹", "뷰웅", 
+    "바랄년", "뱅마", "뱅신", "벼엉신", "병쉰", "병신", "병자", "부랄", "부럴", "불알", "붙어먹", "뷰웅", 
     "븅", "븅신", "빌어먹", "빙시", "빙신", "빠구리", "빠굴", "빠큐", "뻐큐", "뻑큐", "뽁큐", 
     "ㅅㅂ", "ㅅㅐ", "상넘이", "상놈을", "상놈의", "상놈이", "새갸", "새기", "새꺄", "새끼", 
     "새키", "색끼", "생쑈", "세갸", "세꺄", "세끼", "섹스", "셰끼", "쉐기", "쉐끼", "쉐리", "쉐에기", "쉐키", "쉑", 
@@ -194,6 +194,7 @@ function response(room, msg, sender, isGroupChat, replier, ImageDB) {
                         "자바, 안드로이드 - https://open.kakao.com/o/goAvtbOb" + "\n\n" +
                         "파이썬(ML), R - https://open.kakao.com/o/gWvnqvF" + "\n\n" +
                         "웹 - https://open.kakao.com/o/gm2yL8kb" + "\n\n" +
+                        "데이터 사이언스, AI(ML/DL) 개발 - https://open.kakao.com/o/g4lJGyzd" + "\n\n" +
                         "조립, 견적, pc문제 - https://open.kakao.com/o/gEI0jymb");
                 }
 
@@ -222,7 +223,6 @@ function response(room, msg, sender, isGroupChat, replier, ImageDB) {
                         "러 리 - https://github.com/Coalery" + "\n" +
                         "고 수 - https://github.com/cpprhtn" + "\n" +
                         "깃 고 - https://github.com/NewPremium" + "\n" +
-                        "암 고 - https://github.com/azure-06" + "\n" +
                         "루 - https://github.com/Lu175" + "\n" +
                         "뽀 로 로 - https://github.com/paxbun" + "\n" +
                         "녹 색 치 킨 - https://github.com/IceJack");
@@ -306,6 +306,8 @@ function response(room, msg, sender, isGroupChat, replier, ImageDB) {
                         "→ python, py, 파이썬" + "\n" +
                         "웹방" + "\n" +
                         "→ 웹" + "\n" +
+                        "AI방" + "\n" +
+                        "→ AI, Ai, ai, 먀, 데싸" + "\n" +
                         "견적방" + "\n" +
                         "→ 견적");
                 }
@@ -316,12 +318,12 @@ function response(room, msg, sender, isGroupChat, replier, ImageDB) {
                 }
 
                 if (((msg == "/C") || (msg == "/c") || (msg == "/씨") || (msg == "/cpp") || (msg == "/C") || (msg == "/C"))) {
-                    replier.reply("Cpp 러리 룰루 뽀로로 양사 코양");
+                    replier.reply("뽀로로 Cpp Lu175 러리 양사 코양");
                     replier.reply("C 어셈블!!!!!!!");
                 }
 
                 if (((msg == "/JAVA") || (msg == "/java") || (msg == "/자바"))) {
-                    replier.reply("러리 Cpp 양사 코양");
+                    replier.reply("러리 Cpp 녹치 양사 코양");
                     replier.reply("자바 어셈블!!!!!!!");
                 }
 
@@ -331,20 +333,25 @@ function response(room, msg, sender, isGroupChat, replier, ImageDB) {
                 }
 
                 if (msg == "/웹") {
-                    replier.reply("코양 Cpp 러리 뽀로로 양사 녹치");
+                    replier.reply("코양 Cpp 녹치 러리 뽀로로 양사");
+                    replier.reply("웹 어셈블!!!!!!!");
+                }
+
+                if (msg == "/AI" || msg == "/Ai" || msg == "/ai" || msg == "/먀" || msg == "/데싸") {
+                    replier.reply("Cpp 뽀로로 코양");
                     replier.reply("웹 어셈블!!!!!!!");
                 }
 
                 if (msg == "/견적") {
-                    replier.reply("양사 Cpp 깃고 러리 코양");
+                    replier.reply("양사 Cpp 깃고 녹치 러리 코양");
                     replier.reply("견적 어셈블!!!!!!!");
                 }
                 
                 if (msg == "/키생성") {
-                    replier.reply("생성할 키 갯수 (1~3사이 숫자 입력)");
+                    replier.reply("생성할 키 갯수 (1~6사이 숫자 입력)");
                     player = sender;
                 }
-                if ((player == sender) && (msg == "1" || msg == "2" || msg == "3")) {
+                if ((player == sender) && (msg == "1" || msg == "2" || msg == "3" || msg == "4" || msg == "5" || msg == "6")) {
                     key_cnt = Number(msg);
                     var max = 16777216;
                     var min = 1048576;
