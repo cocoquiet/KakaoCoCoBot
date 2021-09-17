@@ -195,7 +195,7 @@ function response(room, msg, sender, isGroupChat, replier, ImageDB) {
                         "디스코드(공통) - https://discord.gg/cZ5r5PRTX5" + "\n\n" +
                         "C언어, C#, C++, 게임 엔진 - https://open.kakao.com/o/ghFjlzr" + "\n\n" +
                         "자바, 안드로이드 - https://open.kakao.com/o/goAvtbOb" + "\n\n" +
-                        "파이썬(ML), R - https://open.kakao.com/o/gWvnqvF" + "\n\n" +
+                        "파이썬, R - https://open.kakao.com/o/gWvnqvF" + "\n\n" +
                         "웹 - https://open.kakao.com/o/gm2yL8kb" + "\n\n" +
                         "데이터 사이언스, AI(ML/DL) 개발 - https://open.kakao.com/o/g4lJGyzd" + "\n\n" +
                         "조립, 견적, pc문제 - https://open.kakao.com/o/gEI0jymb");
