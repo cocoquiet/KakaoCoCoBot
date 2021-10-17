@@ -11,28 +11,28 @@ var key_cnt = 0;
 
 function roomBangjang(room) {
     if(room == "운영위방") {
-        return "테스트중입니다";
+        return "\n테스트중입니다";
     }
     else if(room == "C방") {
-        return "뽀로로 Cpp Lu175 러리 양사 코양" + "\n신고 #신고 /신고";
+        return "\n뽀로로 Cpp Lu175 러리 양사 코양" + "\n신고 #신고 /신고";
     }
     else if(room === "자바방") {
-        return "러리 Cpp 녹치 양사 코양" + "\n신고 #신고 /신고";
+        return "\n러리 Cpp 녹치 양사 코양" + "\n신고 #신고 /신고";
         }
     else if(room == "파이썬방") {
-        return "코양 Cpp 깃고 러리 룰루 양사" + "\n신고 #신고 /신고";
+        return "\n코양 Cpp 깃고 러리 룰루 양사" + "\n신고 #신고 /신고";
     }
     else if(room == "웹방") {
-        return "코양 Cpp 녹치 러리 뽀로로 양사" + "\n신고 #신고 /신고";
+        return "\n코양 Cpp 녹치 러리 뽀로로 양사" + "\n신고 #신고 /신고";
     }
     else if(room == "AI방") {
-        return "Cpp 뽀로로 코양" + "\n신고 #신고 /신고";
+        return "\nCpp 뽀로로 코양" + "\n신고 #신고 /신고";
     }
     else if(room == "견적방") {
-        return "양사 Cpp 깃고 녹치 러리 코양" + "\n신고 #신고 /신고";
+        return "\n양사 Cpp 깃고 녹치 러리 코양" + "\n신고 #신고 /신고";
     }
     else if(room == "작곡방") {
-        return "양사, Mute Jack, 황병욱, 블루링, 조담" + "\n신고 #신고 /신고";
+        return "\n양사, Mute Jack, 황병욱, 블루링, 조담" + "\n신고 #신고 /신고";
     }
 }
     
@@ -119,10 +119,10 @@ function response(room, msg, sender, isGroupChat, replier, ImageDB) {
                     if (msg.indexOf(keylist[i]) != -1 && room != "3학년5반" && room != "운영위방") {
                         replier.reply(
                             "로그방",
-                            "홍보키 사용 : " + "\n" +
-                            "감지 위치 : " + room + "\n" +
-                            "닉네임 : " + sender + "\n" +
-                            "사용된 키 : " + keylist[i]
+                            "홍보키 사용 : " + 
+                            "\n감지 위치 : " + room + 
+                            "\n닉네임 : " + sender + 
+                            "\n사용된 키 : " + keylist[i]
                             );
                         keylist.splice(i, 1);
                         Detecting = 0;
@@ -134,14 +134,14 @@ function response(room, msg, sender, isGroupChat, replier, ImageDB) {
                         if (msg.indexOf(advertisement[i]) != -1 && room != "3학년5반" && Detecting != 0) {
                             replier.reply(
                                 "로그방",
-                                "광고 감지" + "\n" +
-                                "감지 위치 : " + room + "\n" +
-                                "닉네임 : " + sender + "\n" +
-                                "키워드 : " + advertisement[i] + "\n" +
+                                "광고 감지" + 
+                                "\n감지 위치 : " + room + 
+                                "\n닉네임 : " + sender + 
+                                "\n키워드 : " + advertisement[i] + 
                                 roomBangjang(room));
                             replier.reply(
                                 "로그방",
-                                "문제의 메세지" + "\n" + msg);
+                                "문제의 메세지\n" + msg);
                         }
                     }
                 }
@@ -152,87 +152,99 @@ function response(room, msg, sender, isGroupChat, replier, ImageDB) {
                         replier.reply("문제의 키워드를 발견했습니다.");
                         replier.reply(
                         "로그방", 
-                        "욕설 감지" + "\n" + 
-                        "감지 위치 : " + room + "\n" + 
-                        "닉네임 : " + sender + "\n" +
-                        "키워드 : " + cuss[i] + "\n" + 
+                        "욕설 감지" +  
+                        "\n감지 위치 : " + room +  
+                        "\n닉네임 : " + sender + 
+                        "\n키워드 : " + cuss[i] + 
                         roomBangjang(room));
                         replier.reply(
                         "로그방", 
-                        "문제의 메세지" + "\n" + msg);
+                        "문제의 메세지\n" + msg);
                     }
                 }
             }
             var day = new Date();
 
-            if (room != "3학년5반") {
-                // 도움말
-                if (msg == "/help") {
+            // 도움말
+            if (msg == "/help") {
+                replier.reply(
+                    "/help" + "\n명령어에 대한 도움말 정보를 제공합니다." + 
+                    "\n/채팅방 목록" + "\n고코위의 모든 채팅방 링크를 표시합니다." + 
+                    "\n/서버 상태" + "\n코코의 정보 및 상태를 표시합니다." +
+                    "\n/서버 개발자" + "\n코코봇의 개발자를 알려줍니다." + 
+                    "\n/깃허브" + "\n관리자들의 깃허브 주소를 알려줍니다.");
+                if (room == "운영위방") {
                     replier.reply(
-                        "/help" + "\n" + "명령어에 대한 도움말 정보를 제공합니다." + "\n" +
-                        "/채팅방 목록" + "\n" + "고코위의 모든 채팅방 링크를 표시합니다." + "\n" +
-                        "/서버 상태" + "\n" + "코코의 정보 및 상태를 표시합니다." + "\n" +
-                        "/서버 개발자" + "\n" + "코코봇의 개발자를 알려줍니다." + "\n" +
-                        "/깃허브" + "\n" + "관리자들의 깃허브 주소를 알려줍니다.");
-                    if (room == "운영위방") {
-                        replier.reply(
-                            "관리자 전용 기능" + "\n\n" +
-                            "코코야" + "\n" + "기분에 따라 대답하는 온도차가 큽니다." + "\n" +
-                            "/가위바위보" + "\n" + "가위바위보를 합니다." + "\n" +
-                            "/날짜" + "\n" + "오늘의 날짜를 알려줍니다." + "\n" +
-                            "/시간" + "\n" + "현재 시각을 알려줍니다." + "\n" +
-                            "/짖어" + "\n" + "짖습니다." + "\n" +
-                            "/호출" + "\n" + "관리자들의 호출 명령어를 알려줍니다.");
-                    }
-                }
-
-                // 기본 명령어 모음
-                if (msg == "/채팅방 목록") {
-                    replier.reply(
-                        "클릭시 방 목록 보기                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    " + "\n\n" +
-                        "저희는 여러 개의 방과 같이 활동하는 개발자 연합입니다. 다른 종류의 언어를 질문하고 싶으시면 밑의 링크를 타시길 바랍니다." + "\n\n" +
-                        "네이버카페(공통) - https://cafe.naver.com/codecat" + "\n\n" +
-                        "디스코드(공통) - https://discord.gg/cZ5r5PRTX5" + "\n\n" +
-                        "C언어, C#, C++, 게임 엔진 - https://open.kakao.com/o/ghFjlzr" + "\n\n" +
-                        "자바, 안드로이드 - https://open.kakao.com/o/goAvtbOb" + "\n\n" +
-                        "파이썬, R - https://open.kakao.com/o/gWvnqvF" + "\n\n" +
-                        "웹 - https://open.kakao.com/o/gm2yL8kb" + "\n\n" +
-                        "데이터 사이언스, AI(ML/DL) 개발 - https://open.kakao.com/o/g4lJGyzd" + "\n\n" +
-                        "조립, 견적, pc문제 - https://open.kakao.com/o/gEI0jymb");
-                }
-
-                if (msg == "/서버 상태") {
-                    replier.reply(
-                        "봇 버전 : " + Bot.getVersion() + "\n" +
-                        "자바스크립트 버전 : " + Bot.getJsVersion() + "\n" +
-                        "모델명: " + Device.getModelName() + "\n" +
-                        "안드로이드 버전: " + Device.getAndroidVersion() + "\n" +
-                        "안드로이드 API: " + Device.getApiLevel() + "\n" +
-                        "배터리 잔량: " + Device.getBatteryLevel() + "% \n" +
-                        "배터리 온도: " + Device.getBatteryTemp() + "°C" + "\n" +
-                        "상태: ON" + "\n" +
-                        "이름: 코코"
-                    );
-                }
-
-                if (msg == "/서버 개발자") {
-                    replier.reply("개발자: 암고, 양사, 코양, 고수\n관리자: 코양\n운영: 고양이들의 코딩 위원회(C-3)\nCopyright 2020-2021. Cat Coding Committee. All rights reserved.");
-                }
-
-                if (msg == "/깃허브") {
-                    replier.reply(
-                        "코양이 위원장 - https://github.com/easycastle" + "\n" +
-                        "양 사 - https://github.com/sat0317" + "\n" +
-                        "러 리 - https://github.com/Coalery" + "\n" +
-                        "고 수 - https://github.com/cpprhtn" + "\n" +
-                        "깃 고 - https://github.com/NewPremium" + "\n" +
-                        "루 - https://github.com/Lu175" + "\n" +
-                        "뽀 로 로 - https://github.com/paxbun" + "\n" +
-                        "녹 색 치 킨 - https://github.com/IceJack");
-                    replier.reply("다들 한번씩 놀러오세요~");
+                        "관리자 전용 기능" +
+                        "\n\n코코야" + "\n기분에 따라 대답하는 온도차가 큽니다." +
+                        "\n/가위바위보" + "\n가위바위보를 합니다." +
+                        "\n/날짜" + "\n오늘의 날짜를 알려줍니다." +
+                        "\n/시간" + "\n현재 시각을 알려줍니다." +
+                        "\n/짖어" + "\n짖습니다." + 
+                        "\n/호출" + "\n관리자들의 호출 명령어를 알려줍니다.");
                 }
             }
-            
+
+            // 기본 명령어 모음
+            if (msg == "/채팅방 목록") {
+                replier.reply(
+                    "클릭시 방 목록 보기                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    " + 
+                    "\n\n저희는 여러 개의 방과 같이 활동하는 개발자 연합입니다. 다른 종류의 언어를 질문하고 싶으시면 밑의 링크를 타시길 바랍니다." + 
+                    "\n\n네이버카페(공통) - https://cafe.naver.com/codecat" +
+                    "\n\n디스코드(공통) - https://discord.gg/cZ5r5PRTX5" + 
+                    "\n\nC언어, C#, C++, 게임 엔진 - https://open.kakao.com/o/ghFjlzr" + 
+                    "\n\n자바, 안드로이드 - https://open.kakao.com/o/goAvtbOb" + 
+                    "\n\n파이썬, R - https://open.kakao.com/o/gWvnqvF" + 
+                    "\n\n웹 - https://open.kakao.com/o/gm2yL8kb" + 
+                    "\n\n데이터 사이언스, AI(ML/DL) 개발 - https://open.kakao.com/o/g4lJGyzd" + 
+                    "\n\n조립, 견적, pc문제 - https://open.kakao.com/o/gEI0jymb");
+            }
+
+            if (msg == "/서버 상태") {
+                replier.reply(
+                    "봇 버전 : " + Bot.getVersion() + 
+                    "\n자바스크립트 버전 : " + Bot.getJsVersion() + 
+                    "\n모델명: " + Device.getModelName() + 
+                    "\n안드로이드 버전: " + Device.getAndroidVersion() + 
+                    "\n안드로이드 API: " + Device.getApiLevel() + 
+                    "\n배터리 잔량: " + Device.getBatteryLevel() + "%" +
+                    "\n배터리 온도: " + Device.getBatteryTemp() + "°C" +
+                    "\n상태: ON" +
+                    "\n이름: 코코"
+                );
+            }
+
+            if (msg == "/서버 개발자") {
+                replier.reply("개발자: 암고, 양사, 코양, 고수\n관리자: 코양\n운영: 고양이들의 코딩 위원회(C-3)\nCopyright 2020-2021. Cat Coding Committee. All rights reserved.");
+            }
+
+            if (msg == "/깃허브") {
+                replier.reply(
+                    "코양이 위원장 - https://github.com/easycastle" +
+                    "\n양 사 - https://github.com/sat0317" +
+                    "\n러 리 - https://github.com/Coalery" +
+                    "\n고 수 - https://github.com/cpprhtn" +
+                    "\n깃 고 - https://github.com/NewPremium" +
+                    "\n루 - https://github.com/Lu175" +
+                    "\n뽀 로 로 - https://github.com/paxbun" +
+                    "\n녹 색 치 킨 - https://github.com/IceJack");
+                replier.reply("다들 한번씩 놀러오세요~");
+            }
+
+            if (msg == "ㅍㅏ") {
+                replier.reply("투철한 신고 감사드립니다! 하지만 정책이 바뀌어서 앞으로는 '신고!'라고 해주시면 좋을것 같네요ㅎㅎ");   
+            }
+
+            if (msg == "신고!") {
+                replier.reply(
+                    "로그방", 
+                    "신고 감지" +
+                    "\n신고 위치 : " + room +  
+                    "\n신고자 : " + sender + 
+                    roomBangjang(room))
+                replier.reply("신고 접수되었습니다!");
+            }
+
 
 
             // 관리자 명령어 모음
@@ -301,18 +313,18 @@ function response(room, msg, sender, isGroupChat, replier, ImageDB) {
 
                 if (msg == "/호출") {
                     replier.reply(
-                        "C방" + "\n" +
-                        "→ C, c, 씨" + "\n" +
-                        "자바방 " + "\n" +
-                        "→ JAVA, java, 자바" + "\n" +
-                        "파이썬방" + "\n" +
-                        "→ python, py, 파이썬" + "\n" +
-                        "웹방" + "\n" +
-                        "→ 웹" + "\n" +
-                        "AI방" + "\n" +
-                        "→ AI, Ai, ai, 먀, 데싸" + "\n" +
-                        "견적방" + "\n" +
-                        "→ 견적");
+                        "C방" + 
+                        "\n→ C, c, 씨" + 
+                        "\n자바방 " + 
+                        "\n→ JAVA, java, 자바" + 
+                        "\n파이썬방" + 
+                        "\n→ python, py, 파이썬" + 
+                        "\n웹방" + 
+                        "\n→ 웹" + 
+                        "\nAI방" + 
+                        "\n→ AI, Ai, ai, 먀, 데싸" + 
+                        "\n견적방" + 
+                        "\n→ 견적");
                 }
 
                 if (msg == "/고코위") {
@@ -342,7 +354,7 @@ function response(room, msg, sender, isGroupChat, replier, ImageDB) {
 
                 if (msg == "/AI" || msg == "/Ai" || msg == "/ai" || msg == "/먀" || msg == "/데싸") {
                     replier.reply("Cpp 뽀로로 코양");
-                    replier.reply("웹 어셈블!!!!!!!");
+                    replier.reply("AI 어셈블!!!!!!!");
                 }
 
                 if (msg == "/견적") {
@@ -361,9 +373,9 @@ function response(room, msg, sender, isGroupChat, replier, ImageDB) {
                     var key = Math.floor(Math.random() * (max - min)) + min;
                     key = key.toString(16);
                     replier.reply(
-                        "아래 주어지는 키 번호는 홍보가 허용된 글에만 사용이 가능합니다" + "\n" +
-                        "아래 주어진 키를 홍보 글의 최상단에 붙여 넣어주세요." + "\n" +
-                        key_cnt + "회 홍보시 해당 키는 효력이 사라지며, 재홍보를 원할 시 다시 키를 재발급 받아야 합니다." + "\n\n" +
+                        "아래 주어지는 키 번호는 홍보가 허용된 글에만 사용이 가능합니다" + 
+                        "\n아래 주어진 키를 홍보 글의 최상단에 붙여 넣어주세요.\n" + 
+                        key_cnt + "회 홍보시 해당 키는 효력이 사라지며, 재홍보를 원할 시 다시 키를 재발급 받아야 합니다.\n\n" + 
                         "발급 키 : " + key);
                     for (var i = 0; i < key_cnt; i++)
                         keylist.push(key);
